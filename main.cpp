@@ -2,15 +2,22 @@
 struct A{
     virtual void f() = 0;
 };
+
 struct B: A{
-   void f() override{
-       std::cout<<"Hello";
-   }
-   void g(){
-       std::cout<<"HI";
-   }
+    virtual void f() override{
+        std::cout<< 1;
+    }
 };
+
+struct C:B{
+    int a;
+};
+
 int main() {
-    A* pb = new B;
-    dynamic_cast<B*>(pb)->g();
+  B rb;
+  C rc;
+  rc.f();
+
+
+
 }
