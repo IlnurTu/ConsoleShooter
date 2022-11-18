@@ -19,7 +19,7 @@ public:
 
     std::shared_ptr<Weapon> get_current_weapon() const;
 
-    void set_current_weapon(std::shared_ptr<Weapon>);
+    std::shared_ptr<Weapon> set_current_weapon(std::shared_ptr<Weapon>);
 
     virtual size_t shoot() override;
 };

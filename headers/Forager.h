@@ -23,7 +23,7 @@ public:
 
     void set_current_weight(unsigned short);
 
-    std::ostream& show_invetory(std::ostream&) const;
+    std::string show_invetory() const;
 
     void push_inventory(std::shared_ptr<Item>);
 

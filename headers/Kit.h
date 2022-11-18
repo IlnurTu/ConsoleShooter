@@ -18,7 +18,6 @@ public:
     void set_time_use(unsigned short);
 
     void set_restored_health(unsigned short);
-
 };
 
 #endif //LAB4_KIT_H

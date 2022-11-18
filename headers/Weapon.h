@@ -23,7 +23,7 @@ public:
     unsigned short get_current_number_bullets() const;
 
     unsigned short get_max_number_bullets() const;
-`
+
     unsigned short get_time_shoot() const;
 
     void set_damage(unsigned short);

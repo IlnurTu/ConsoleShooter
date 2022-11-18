@@ -29,6 +29,8 @@ public:
     void take_step(direction);
 
     void get_damage(unsigned short);
+
+    void reload_current_time();
 };
 
 #endif //LAB4_UNIT_H
