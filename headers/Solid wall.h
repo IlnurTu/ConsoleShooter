@@ -8,7 +8,7 @@
 
 class SolidWall:public Cell{
 public:
-    SolidWall(unsigned short x,unsigned short y);
+    SolidWall(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop);
 
     void virtual shoot() override;
 };

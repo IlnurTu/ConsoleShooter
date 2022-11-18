@@ -14,13 +14,13 @@ public:
 
     Inventory(Inventory&& el) noexcept;
 
-    void add(std::shared_ptr<Item> item);
+    Inventory& add(std::shared_ptr<Item> item);
 
     size_t getCount() const;
 
     size_t getWeight() const;
 
-    std::shared_ptr<Item> getItem(size_t id);
+    std::shared_ptr<Item> eraseItem(size_t id);
 
     using Const_Iterator = std::vector<std::shared_ptr<Item>>::const_iterator;
 

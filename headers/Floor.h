@@ -5,14 +5,15 @@ class Floor: public Cell{
 private:
     Inventory inventory;
 public:
-    Floor(unsigned int x,unsigned int y);
+    Floor(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop,
+          Inventory inventory = Inventory());
 
     virtual void shoot() override;
 
-    std::ostream& show_items(std::ostream&) const;
+    std::string show_items() const;
 
-    std::shared_ptr<Item> extract_item(size_t id);
+    std::shared_ptr<Item> extractItem(size_t id);
 
-    void push_item(std::shared_ptr<Item>);
+    Floor& pushItem(std::shared_ptr<Item>);
 };
 #endif //LAB4_FLOOR_H

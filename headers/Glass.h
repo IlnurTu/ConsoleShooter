@@ -8,7 +8,7 @@
 
 class Glass:public Cell{
 public:
-    Glass(unsigned short x,unsigned short y);
+    Glass(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop);
 
     void virtual shoot() override;
 };

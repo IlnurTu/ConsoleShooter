@@ -10,11 +10,11 @@ protected:
     unsigned short type_bullets;
     unsigned short current_number_bullets;
     unsigned short max_number_bullets;
-    unsigned short time_shoot;
+    unsigned short points_time_for_shoot;
 public:
     Weapon(std::string name, unsigned short weight, unsigned short damage,
            unsigned short type_bullets, unsigned short current_number_bullets,
-           unsigned short max_number_bullets, unsigned short time_shoot);
+           unsigned short max_number_bullets, unsigned short points_time_for_shoot);
 
     unsigned short get_damage() const;
 
@@ -26,17 +26,7 @@ public:
 
     unsigned short get_time_shoot() const;
 
-    void set_damage(unsigned short);
-
-    void set_type_bullets(unsigned short);
-
-    void set_current_number_bullets(unsigned short);
-
-    void set_max_number_bullets(unsigned short);
-
-    void set_time_shoot(unsigned short);
-
-    void reload();
+    Weapon& reload();
 
     virtual unsigned short shoot() = 0;
 };

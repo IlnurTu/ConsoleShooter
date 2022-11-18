@@ -7,15 +7,10 @@ class Intelligent:public Wild{
 protected:
     std::shared_ptr<Weapon> current_weapon;
 public:
-    Intelligent(const std::string&);
-
-    Intelligent(const std::string &name, unsigned short max_health, unsigned short time_step,
-                unsigned short viewing_radius, unsigned short max_points_time, unsigned short accuracy,
-                unsigned short time_shoot);
-
-    Intelligent(const Intelligent&);
-
-    Intelligent(Intelligent&&) noexcept;
+    Intelligent(std::string name, unsigned short max_health, unsigned short points_time_for_step,
+                unsigned short viewing_radius, unsigned short max_points_time, size_t coordinate_x, size_t coordinate_y,
+                unsigned short accuracy, unsigned short damage, unsigned short points_time_for_shoot,
+                std::shared_ptr<Weapon> current_weapon = nullptr);
 
     std::shared_ptr<Weapon> get_current_weapon() const;
 

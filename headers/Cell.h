@@ -1,29 +1,25 @@
 #ifndef LAB4_CELL_H
 #define LAB4_CELL_H
-#include "Point.h"
+#include "Unit.h"
 #include "Inventory.h"
 
 class Cell{
 protected:
-    bool view_state; // true if it is seen unit
+    std::string name;
+    bool is_transparent;
     Point coordinate;
-    bool shoot_state; //true if it is
+    bool is_bullet_stop;
 public:
-    Cell(unsigned short x,unsigned short y);
+    Cell(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop);
 
     virtual void shoot() = 0;
 
-    const Point& get_coordinate() const;
+    Point get_coordinate() const;
 
     bool get_shoot_state() const;
 
     bool get_view_state() const;
 
-    void set_shoot_state(bool);
-
-    void set_coordinate(const Point&);
-
-    void set_view_state(bool);
 };
 
 #endif //LAB4_CELL_H

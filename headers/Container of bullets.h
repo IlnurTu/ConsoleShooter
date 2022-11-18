@@ -16,13 +16,7 @@ public:
 
     unsigned short get_type() const;
 
-    void set_current_number_bullets(size_t);
-
-    void set_max_number_bullets(size_t);
-
-    void set_type(size_t);
-
-    void reload(size_t);
+    ContainerBullets& reload(size_t);
 };
 
 

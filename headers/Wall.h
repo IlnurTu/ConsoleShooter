@@ -8,7 +8,7 @@
 
 class Wall:public Cell{
 public:
-    Wall(unsigned short x,unsigned short y);
+    Wall(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop);
 
     void virtual shoot() override;
 };

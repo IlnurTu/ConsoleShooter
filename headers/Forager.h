@@ -10,24 +10,19 @@ protected:
     unsigned short current_weight;
     Inventory inventory;
 public:
-    Forager(std::string);
-
-    Forager(std::string name, unsigned short max_health, unsigned short time_step,
-            unsigned short viewing_radius, unsigned short max_points_time, unsigned short max_weight);
+    Forager(std::string name, unsigned short max_health, unsigned short points_time_for_step,
+            unsigned short viewing_radius, unsigned short max_points_time, size_t coordinate_x, size_t coordinate_y,
+            unsigned short max_weight,Inventory inventory = Inventory());
 
     unsigned short get_max_weight() const;
 
     unsigned short get_current_weight() const;
 
-    void set_max_weight(unsigned short);
-
-    void set_current_weight(unsigned short);
-
     std::string show_invetory() const;
 
-    void push_inventory(std::shared_ptr<Item>);
+    Forager& push_inventory(std::shared_ptr<Item>);
 
-    void pop_inventory(size_t id);
+    Forager& pop_inventory(size_t id);
 
 };
 

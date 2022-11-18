@@ -2,19 +2,29 @@
 #define LAB4_UNIT_H
 
 #include <string>
-#include "Point.h"
-#include "Base parameters.h"
 #include "Direction enum.h"
+
+struct base_parameters {
+    std::string name;
+    unsigned short max_health;
+    unsigned short current_health;
+    unsigned short points_time_for_step;
+    unsigned short viewing_radius;
+    unsigned short current_points_time;
+    unsigned short max_points_time;
+};
+
+struct Point {
+    size_t x, y;
+};
 
 class Unit {
 protected:
-    base_parameters general_parameters;
+    base_parameters main_parameters;
     Point position;
 public:
-    Unit(const std::string &);
-
-    Unit(const std::string &name, unsigned short max_health, unsigned short time_step,
-         unsigned short viewing_radius, unsigned short max_points_time);
+    Unit(std::string name, unsigned short max_health, unsigned short points_time_for_step,
+         unsigned short viewing_radius, unsigned short max_points_time,size_t coordinate_x,size_t coordinate_y);
 
     virtual ~Unit();
 
@@ -22,15 +32,11 @@ public:
 
     Point get_position() const;
 
-    void set_position(const Point&);
+    Unit& take_step(direction);
 
-    void set_general_parametres(const base_parameters &);
+    Unit& get_damage(unsigned short);
 
-    void take_step(direction);
-
-    void get_damage(unsigned short);
-
-    void reload_current_time();
+    Unit& reload_current_time();
 };
 
 #endif //LAB4_UNIT_H

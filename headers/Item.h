@@ -4,18 +4,16 @@
 
 class Item{
 protected:
-    std::string Name;
+    std::string name;
     unsigned short weight;
 public:
-    Item(std::string,unsigned short);
+    Item(std::string name,unsigned short weight);
 
     virtual ~Item();
 
-    const std::string& get_name() const;
+    std::string get_name() const;
 
-    void set_name(const std::string&);
-
-    void set_weight(unsigned short);
+    unsigned short get_weight() const;
 
 };
 
