@@ -3,4 +3,13 @@ project(lab4)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(lab4 main.cpp headers/Item.h headers/Inventory.h headers/Kit.h headers/Weapon.h "headers/Container of bullets.h" headers/Operative.h headers/Unit.h headers/Forager.h "headers/Direction enum.h" headers/Wild.h headers/Intelligent.h headers/Rifle.h headers/Gun.h headers/Cell.h headers/Level.h headers/Floor.h "headers/Solid wall.h" headers/Glass.h headers/Wall.h headers/Map.h headers/Game.h source/Unit.cpp)
+enable_testing()
+add_subdirectory(googletest)
+add_executable(test_app Tests/Unit.cpp source/Unit.cpp source/Wild.cpp source/Item.cpp source/Kit.cpp
+        "source/Container of bullets.cpp" source/Weapon.cpp source/Rifle.cpp source/Gun.cpp source/Inventory.cpp
+        source/Intelligent.cpp source/Forager.cpp source/Operative.cpp source/Cell.cpp source/Wall.cpp source/Glass.cpp source/Floor.cpp "source/Weak wall.cpp" "source/Operative control system.cpp" source/Map.cpp)
+target_link_libraries(test_app gtest_main gmock_main)
+
+add_executable(app main.cpp source/Unit.cpp source/Wild.cpp source/Item.cpp source/Kit.cpp
+        "source/Container of bullets.cpp" source/Weapon.cpp source/Rifle.cpp source/Gun.cpp source/Inventory.cpp
+        source/Intelligent.cpp source/Forager.cpp source/Operative.cpp source/Cell.cpp source/Wall.cpp source/Glass.cpp source/Floor.cpp "source/Weak wall.cpp" "source/Operative control system.cpp" source/Map.cpp source/LoadUnloadFile.cpp)

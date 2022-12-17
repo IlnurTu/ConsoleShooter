@@ -2,21 +2,25 @@
 #define LAB4_CONTAINER_OF_BULLETS_H
 #include "Item.h"
 
-class ContainerBullets:public Item{
-protected:
+struct ContainerBullets_parameters{
     size_t current_number_bullets;
     size_t max_number_bullets;
+};
+
+class ContainerBullets:public Item{
+protected:
+    ContainerBullets_parameters parameters;
     unsigned short type;
 public:
-    ContainerBullets(std::string name,unsigned short weight,size_t max_bullets,unsigned short type);
+    ContainerBullets(std::string name,unsigned short weight,size_t max_bullets,size_t current_bullets,unsigned short type);
 
-    size_t get_current_number_bullets() const;
-
-    size_t get_max_number_bullets() const;
+    ContainerBullets_parameters get_parameters() const;
 
     unsigned short get_type() const;
 
-    ContainerBullets& reload(size_t);
+    bool reload(size_t);
+
+    std::string get_info() const override;
 };
 
 

@@ -2,17 +2,21 @@
 #define LAB4_KIT_H
 #include "Item.h"
 
-class Kit: public Item{
-protected:
+struct kit_parameters{
     unsigned short points_time_for_use;
     unsigned short restored_health;
+};
+
+class Kit: public Item{
+protected:
+    kit_parameters parameters;
 public:
 
     Kit(std::string name,unsigned short weight,unsigned short points_time_for_use,unsigned short restored_health);
 
-    unsigned short get_points_time_for_use() const;
+    kit_parameters get_parameters() const;
 
-    unsigned short get_restored_health() const;
+    std::string get_info() const override;
 
 };
 

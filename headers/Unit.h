@@ -16,6 +16,40 @@ struct base_parameters {
 
 struct Point {
     size_t x, y;
+
+    void setPos(direction drctn) {
+        switch (drctn) {
+            case left:
+                x -= 1;
+                break;
+            case right:
+                x += 1;
+                break;
+            case straight:
+                y += 1;
+                break;
+            case back:
+                y -= 1;
+                break;
+            case left_back:
+                x -= 1;
+                y -= 1;
+                break;
+            case right_back:
+                x += 1;
+                y -= 1;
+                break;
+            case left_straight:
+                x -= 1;
+                y += 1;
+                break;
+            case right_straight:
+                x += 1;
+                y += 1;
+                break;
+        }
+
+    };
 };
 
 class Unit {
@@ -23,20 +57,22 @@ protected:
     base_parameters main_parameters;
     Point position;
 public:
-    Unit(std::string name, unsigned short max_health, unsigned short points_time_for_step,
-         unsigned short viewing_radius, unsigned short max_points_time,size_t coordinate_x,size_t coordinate_y);
+    Unit(std::string name, unsigned short max_health, unsigned short current_health,
+         unsigned short points_time_for_step,
+         unsigned short viewing_radius, unsigned short max_points_time, unsigned short current_points_time,
+         size_t coordinate_x, size_t coordinate_y);
 
-    virtual ~Unit();
+    virtual ~Unit() = default;
 
-    base_parameters get_general_parametres() const;
+    base_parameters get_general_parameters() const;
 
     Point get_position() const;
 
-    Unit& take_step(direction);
+    Unit &take_step(direction);
 
-    Unit& get_damage(unsigned short);
+    Unit &get_damage(unsigned short);
 
-    Unit& reload_current_time();
+    void reload_current_time();
 };
 
 #endif //LAB4_UNIT_H

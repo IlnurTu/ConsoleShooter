@@ -3,14 +3,18 @@
 #include "Unit.h"
 #include "Inventory.h"
 
+
 class Cell{
 protected:
     std::string name;
-    bool is_transparent;
     Point coordinate;
+    Inventory inventory;
+    bool is_transparent;
     bool is_bullet_stop;
+    std::shared_ptr<Unit> unit;
 public:
-    Cell(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop);
+    Cell(std::string name,unsigned short x,unsigned short y,bool is_transparent,bool is_bullet_stop,
+         Inventory inventory,std::shared_ptr<Unit> unit);
 
     virtual void shoot() = 0;
 
@@ -19,6 +23,20 @@ public:
     bool get_shoot_state() const;
 
     bool get_view_state() const;
+
+    std::shared_ptr<Unit> get_unit() const;
+
+    void set_unit(std::shared_ptr<Unit> unit);
+
+    virtual std::shared_ptr<Item> extractItem(size_t id);
+
+    virtual Cell& pushItem(std::shared_ptr<Item>);
+
+    virtual std::shared_ptr<Item> get_item(size_t id) const;
+
+    virtual size_t get_count_items() const;
+
+    std::string get_info() const ;
 
 };
 

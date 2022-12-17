@@ -1,22 +1,27 @@
-//
-// Created by Ильнур Тухватулин on 11.11.2022.
-//
-
 #ifndef LAB4_MAP_H
 #define LAB4_MAP_H
+
 #include "Cell.h"
+#include "Glass.h"
+#include "Weak wall.h"
+#include "Wall.h"
+#include "Floor.h"
 
-class Map{
+class Map {
 private:
-    std::vector<std::vector<std::shared_ptr<Cell>>>;
+    std::vector<std::vector<std::shared_ptr<Cell>>> map;
+    size_t sizeX;
+    size_t sizeY;
 public:
-    Map(const std::string&);
+    Map(std::vector<std::vector<std::shared_ptr<Cell>>> map, size_t sizeMapX, size_t sizeMapY);
 
-    void save(const std::string&);
+    size_t getSizeX() const;
+
+    size_t getSizeY() const;
+
+    std::shared_ptr<Cell> get_cell(size_t x,size_t y);
+
 };
 
 
-
-
-
-#endif //LAB4_MAP_H
+#endif
