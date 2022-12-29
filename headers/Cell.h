@@ -28,15 +28,17 @@ public:
 
     void set_unit(std::shared_ptr<Unit> unit);
 
-    virtual std::shared_ptr<Item> extractItem(size_t id);
+    virtual std::unique_ptr<Item> extractItem(size_t id);
 
-    virtual Cell& pushItem(std::shared_ptr<Item>);
+    virtual Cell& pushItem(std::unique_ptr<Item>);
 
-    virtual std::shared_ptr<Item> get_item(size_t id) const;
+    virtual const std::unique_ptr<Item>& get_item(size_t id) const;
 
     virtual size_t get_count_items() const;
 
     std::string get_info() const ;
+
+    virtual char get_character() const = 0;
 
 };
 

@@ -48,3 +48,7 @@ std::string Wild::get_info() const {
              + std::to_string(get_points_time_for_shoot()) + "\n";
     return result;
 }
+
+char Wild::get_character() const {
+    return 'W';
+}

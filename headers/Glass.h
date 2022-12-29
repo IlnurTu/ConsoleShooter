@@ -13,13 +13,15 @@ public:
 
     void virtual shoot() override;
 
-    virtual std::shared_ptr<Item> extractItem(size_t id) override;
+    virtual std::unique_ptr<Item> extractItem(size_t id) override;
 
-    virtual Glass& pushItem(std::shared_ptr<Item>) override;
+    virtual Glass& pushItem(std::unique_ptr<Item>) override;
 
-    virtual std::shared_ptr<Item> get_item(size_t id) const override;
+    virtual const std::unique_ptr<Item>& get_item(size_t id) const override;
 
     virtual size_t get_count_items() const override;
+
+    virtual char get_character() const override;
 
 };
 #endif //LAB4_GLASS_H

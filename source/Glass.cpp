@@ -8,23 +8,23 @@ void Glass::shoot() {
     is_bullet_stop = false;
 };
 
-std::shared_ptr<Item> Glass::get_item(size_t id) const {
+const std::unique_ptr<Item>& Glass::get_item(size_t id) const{
     if (!is_bullet_stop) {
         return Cell::get_item(id);
     }
     return nullptr;
 }
 
-std::shared_ptr<Item> Glass::extractItem(size_t id) {
+std::unique_ptr<Item> Glass::extractItem(size_t id) {
     if (!is_bullet_stop) {
         return Cell::extractItem(id);
     }
     return nullptr;
 }
 
-Glass &Glass::pushItem(std::shared_ptr<Item> newItem) {
+Glass &Glass::pushItem(std::unique_ptr<Item> newItem) {
     if (!is_bullet_stop) {
-        return static_cast<Glass &>(Cell::pushItem(newItem));
+        return static_cast<Glass &>(Cell::pushItem(std::move(newItem)));
     }
     return *this;
 }
@@ -34,6 +34,15 @@ size_t Glass::get_count_items() const {
         return Cell::get_count_items();
     }
     return 0;
+}
+
+char Glass::get_character() const {
+    if(unit){
+        return unit->get_character();
+    }
+    if(is_bullet_stop)
+        return '0';
+    return ' ';
 }
 
 

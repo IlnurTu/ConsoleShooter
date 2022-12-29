@@ -4,7 +4,7 @@ Operative::Operative(std::string name, unsigned short max_health, unsigned short
                      unsigned short points_time_for_step,
                      unsigned short viewing_radius, unsigned short max_points_time, unsigned short current_points_time,
                      size_t coordinate_x, size_t coordinate_y, unsigned short damage,
-                     unsigned short points_time_for_shoot, std::shared_ptr<Weapon> current_weapon,
+                     unsigned short points_time_for_shoot, std::unique_ptr<Weapon> current_weapon,
                      unsigned short max_weight, unsigned short current_weight, Inventory inventory) :
 
         Unit(std::move(name), max_health, current_health, points_time_for_step, viewing_radius,
@@ -12,27 +12,28 @@ Operative::Operative(std::string name, unsigned short max_health, unsigned short
 
         Intelligent(std::move(name), max_health, current_health, points_time_for_step, viewing_radius,
                     max_points_time, current_points_time, coordinate_x, coordinate_y, damage,
-                    points_time_for_shoot, current_weapon),
+                    points_time_for_shoot, std::move(current_weapon)),
 
         Forager(std::move(name), max_health, current_health, points_time_for_step, viewing_radius,
                 max_points_time, current_points_time, coordinate_x, coordinate_y, max_weight, current_weight,
-                inventory) {};
+                std::move(inventory)) {};
 
 Operative &Operative::set_current_weapon(size_t id) {
 
-    std::shared_ptr<Weapon> tmp = dynamic_pointer_cast<Weapon>(inventory.getItem(id));
-    if (tmp == nullptr) {
+    if (dynamic_cast<Weapon*>(inventory.getItem(id).get()) == nullptr) {
         return *this;
     }
-    tmp = std::static_pointer_cast<Weapon>(inventory.eraseItem(id));
+
     inventory.add(std::move(current_weapon));
-    current_weapon = std::move(tmp);
+    current_weapon.reset(dynamic_cast<Weapon*>(inventory.eraseItem(id).release()));
     return *this;
 }
-
+///function which check that there is kit in inventory and use it
+///@param size_t id in inventory
+///@return Operative&
 Operative &Operative::use_kit(size_t id) {
 
-    std::shared_ptr<Kit> tmp = dynamic_pointer_cast<Kit>(inventory.getItem(id));
+    auto tmp = dynamic_cast<Kit*>(inventory.getItem(id).get());
 
     if (tmp == nullptr) {
         return *this;
@@ -52,11 +53,13 @@ Operative &Operative::use_kit(size_t id) {
         main_parameters.current_health += tmp->get_parameters().restored_health;
     }
 
-    tmp = std::static_pointer_cast<Kit>(inventory.eraseItem(id));
+   inventory.eraseItem(id);
 
     return *this;
 }
-
+///function that check is there container of bullets with type equal type of current weapon and use it
+///@param
+///@return operative
 Operative &Operative::reload_weapon() {
 
     if (current_weapon == nullptr) {
@@ -74,7 +77,7 @@ Operative &Operative::reload_weapon() {
 
     auto iter = inventory.cbegin();
     for (; iter < inventory.cend(); ++iter) {
-        auto tmp = std::dynamic_pointer_cast<ContainerBullets>(*iter);
+        auto tmp = dynamic_cast<ContainerBullets*>(iter->get());
         if (tmp && tmp->get_type() == current_weapon->get_type_bullets()) {
             unsigned short needed_number_bullets = current_weapon->get_parameters().max_number_bullets -
                                                    current_weapon->get_parameters().current_number_bullets;
@@ -118,4 +121,8 @@ std::string Operative::get_info() const {
         result += current_weapon->get_info();
     result += inventory.get_info();
     return result;
+}
+
+char Operative::get_character() const {
+    return 'O';
 }

@@ -50,7 +50,14 @@ struct Point {
         }
 
     };
+
+    bool operator ==(const Point& r){
+        if(this->x == r.x && this->y == r.y)
+            return true;
+        return false;
+    }
 };
+
 
 class Unit {
 protected:
@@ -64,15 +71,17 @@ public:
 
     virtual ~Unit() = default;
 
-    base_parameters get_general_parameters() const;
+    const base_parameters& get_general_parameters() const;
 
-    Point get_position() const;
+    const Point& get_position() const;
 
     Unit &take_step(direction);
 
     Unit &get_damage(unsigned short);
 
     void reload_current_time();
+
+    virtual char get_character() const = 0;
 };
 
 #endif //LAB4_UNIT_H

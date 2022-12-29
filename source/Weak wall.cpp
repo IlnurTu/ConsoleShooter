@@ -9,23 +9,23 @@ void WeakWall::shoot() {
     is_transparent = true;
 };
 
-std::shared_ptr<Item> WeakWall::get_item(size_t id) const {
+const std::unique_ptr<Item>& WeakWall::get_item(size_t id) const {
     if (!is_bullet_stop) {
         return Cell::get_item(id);
     }
     return nullptr;
 }
 
-std::shared_ptr<Item> WeakWall::extractItem(size_t id) {
+std::unique_ptr<Item> WeakWall::extractItem(size_t id) {
     if (!is_bullet_stop) {
         return Cell::extractItem(id);
     }
     return nullptr;
 }
 
-WeakWall &WeakWall::pushItem(std::shared_ptr<Item> newItem) {
+WeakWall &WeakWall::pushItem(std::unique_ptr<Item> newItem) {
     if (!is_bullet_stop) {
-        return static_cast<WeakWall&>(Cell::pushItem(newItem));
+        return static_cast<WeakWall&>(Cell::pushItem(std::move(newItem)));
     }
     return *this;
 }
@@ -37,4 +37,12 @@ size_t WeakWall::get_count_items() const {
     return 0;
 }
 
+char WeakWall::get_character() const {
+    if(unit){
+        return unit->get_character();
+    }
+    if(is_bullet_stop)
+        return '+';
+    return ' ';
+}
 

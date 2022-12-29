@@ -3,19 +3,19 @@
 #define LAB4_FORAGER_CONTROL_SYTEM_H
 
 class ForagerControlSystem{
-private:
-    std::shared_ptr<Level> lvl;
-    std::shared_ptr<Wild> current_forager;
+protected:
+    Level& lvl;
+    std::shared_ptr<Forager>& current_forager;
 public:
-    ForagerControlSystem(std::shared_ptr<Level> lvl,std::shared_ptr<Wild> current_wild);
+    ForagerControlSystem(Level& lvl,std::shared_ptr<Forager>& current_forager);
 
-    void set_forager(std::shared_ptr<Wild> wild);
+    void set_forager(std::shared_ptr<Forager>& forager);
 
     void take_step(direction drctn);
 
-    void take_item(size_t id);
+    void take_items();
 
-    void throw_item(size_t id);
+    void throw_items();
 
 };
 

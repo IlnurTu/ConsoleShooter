@@ -5,3 +5,11 @@ Floor::Floor(std::string name, unsigned short x, unsigned short y, Inventory inv
 
 void Floor::shoot() {};
 
+char Floor::get_character() const{
+    if(unit)
+        return unit->get_character();
+
+    return ' ';
+}
+
+

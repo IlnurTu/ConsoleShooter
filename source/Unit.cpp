@@ -20,11 +20,11 @@ Unit::Unit(std::string name, unsigned short max_health, unsigned short current_h
     position = {coordinate_x, coordinate_y};
 }
 
-base_parameters Unit::get_general_parameters() const {
+const base_parameters& Unit::get_general_parameters() const {
     return main_parameters;
 }
 
-Point Unit::get_position() const {
+const Point& Unit::get_position() const {
     return position;
 }
 

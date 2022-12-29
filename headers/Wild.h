@@ -7,7 +7,7 @@ class Wild : virtual public Unit {
 protected:
     unsigned short damage;
     unsigned int points_time_for_shoot;
-    unsigned short accuracy;
+
 public:
 
     Wild(std::string name, unsigned short max_health, unsigned short current_health,
@@ -24,6 +24,8 @@ public:
     virtual unsigned short shoot();
 
     std::string get_info() const;
+
+    virtual char get_character() const override;
 
 };
 

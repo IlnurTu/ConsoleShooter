@@ -19,15 +19,17 @@ public:
 
     unsigned short get_current_weight() const;
 
-    Forager& push_inventory(std::shared_ptr<Item>);
+    Forager& push_inventory(std::unique_ptr<Item>);
 
-    std::shared_ptr<Item> pop_inventory(size_t id);
+    std::unique_ptr<Item> pop_inventory(size_t id);
 
-    std::shared_ptr<Item> get_item(size_t id) const;
+    const std::unique_ptr<Item>& get_item(size_t id) const;
 
     size_t get_count_items() const;
 
     std::string get_info() const;
+
+    virtual char get_character() const override;
 };
 
 #endif //LAB4_FORAGER_H

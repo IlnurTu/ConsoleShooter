@@ -6,7 +6,11 @@
 #include <fstream>
 
 class LoadStoreSystem {
-public:
+private:
+    static std::unique_ptr<Weapon> load_weapon(std::ifstream&);
+
+    static Inventory load_inventory(std::ifstream&);
+
     static std::vector<std::shared_ptr<Operative>> load_operatives();
 
     static std::vector<std::shared_ptr<Forager>> load_foragers();

@@ -22,16 +22,16 @@ bool Cell::get_view_state() const {
     return is_transparent;
 }
 
-std::shared_ptr<Item> Cell::get_item(size_t id) const{
+const std::unique_ptr<Item>& Cell::get_item(size_t id) const {
     return inventory.getItem(id);
 }
 
-std::shared_ptr<Item> Cell::extractItem(size_t id) {
+std::unique_ptr<Item> Cell::extractItem(size_t id) {
     return inventory.eraseItem(id);
 }
 
-Cell& Cell::pushItem(std::shared_ptr<Item> newItem) {
-    inventory.add(newItem);
+Cell& Cell::pushItem(std::unique_ptr<Item> newItem) {
+    inventory.add(std::move(newItem));
     return *this;
 }
 
@@ -40,6 +40,8 @@ size_t Cell::get_count_items() const {
 }
 
 void Cell::set_unit(std::shared_ptr<Unit> unit) {
+    if(is_bullet_stop)
+        throw std::runtime_error("it is unreal put unit on cell that is not floor");
     this->unit = std::move(unit);
 }
 

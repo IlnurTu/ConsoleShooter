@@ -17,6 +17,8 @@ struct Level {
     std::vector<std::shared_ptr<Intelligent>> intelligents;
     std::shared_ptr<Map> map;
     std::vector<Point> StoragePoints;
+    size_t countEnemy;
+    size_t countOperative;
 };
 
 #endif

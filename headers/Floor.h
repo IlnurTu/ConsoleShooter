@@ -11,6 +11,7 @@ public:
 
     virtual void shoot() override;
 
+    virtual char get_character() const override;
 
 };
 

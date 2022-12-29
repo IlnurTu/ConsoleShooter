@@ -4,7 +4,7 @@ Intelligent::Intelligent(std::string name, unsigned short max_health, unsigned s
                          unsigned short points_time_for_step, unsigned short viewing_radius,
                          unsigned short max_points_time, unsigned short current_points_time, size_t coordinate_x,
                          size_t coordinate_y, unsigned short damage,
-                         unsigned short points_time_for_shoot, std::shared_ptr<Weapon> current_weapon) :
+                         unsigned short points_time_for_shoot, std::unique_ptr<Weapon> current_weapon) :
 
         Wild(std::move(name), max_health, current_health, points_time_for_step, viewing_radius,
              max_points_time, current_points_time, coordinate_x, coordinate_y, damage, points_time_for_shoot),
@@ -14,11 +14,11 @@ Intelligent::Intelligent(std::string name, unsigned short max_health, unsigned s
 
         current_weapon(std::move(current_weapon)) {};
 
-std::shared_ptr<Weapon> Intelligent::get_current_weapon() const {
+const std::unique_ptr<Weapon>& Intelligent::get_current_weapon() const {
     return current_weapon;
 }
 
-std::shared_ptr<Weapon> Intelligent::set_current_weapon(std::shared_ptr<Weapon> newWeapon) {
+std::unique_ptr<Weapon> Intelligent::set_current_weapon(std::unique_ptr<Weapon> newWeapon) {
     std::swap(newWeapon, current_weapon);
     return newWeapon;
 }
@@ -56,4 +56,8 @@ std::string Intelligent::get_info() const {
     else
         result += current_weapon->get_info();
     return result;
+}
+
+char Intelligent::get_character() const {
+    return 'I';
 }

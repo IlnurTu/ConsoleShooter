@@ -2,7 +2,6 @@
 
 Inventory::Inventory(){};
 
-Inventory::Inventory(const Inventory &el) : arr(el.arr) {}
 
 Inventory::Inventory(Inventory &&el) noexcept: arr(std::move(el.arr)) {}
 
@@ -10,7 +9,7 @@ Inventory &Inventory::operator=(Inventory inventory) {
     arr = std::move(inventory.arr);
 }
 
-Inventory &Inventory::add(std::shared_ptr<Item> item) {
+Inventory &Inventory::add(std::unique_ptr<Item> item) {
     arr.push_back(std::move(item));
     return *this;
 }
@@ -27,19 +26,22 @@ size_t Inventory::getWeight() const {
     return result;
 }
 
-std::shared_ptr<Item> Inventory::eraseItem(size_t id) {
+std::unique_ptr<Item> Inventory::eraseItem(size_t id) {
     if (arr.size() < id) {
         return nullptr;
     }
-    auto tmp = std::move(this->getItem(id));
+    auto tmp = this->getItem(id).release();
     arr.erase(arr.begin() + id - 1);
-    return std::move(tmp);
+    return std::unique_ptr<Item>(tmp);
 }
 
-std::shared_ptr<Item> Inventory::getItem(size_t id) const {
-    if(arr.size() < id){
+const std::unique_ptr<Item>& Inventory::getItem(size_t id)const{
+    if(this->getCount()<id)
         return nullptr;
-    }
+    return arr.at(id - 1);
+}
+
+std::unique_ptr<Item>& Inventory::getItem(size_t id){
     return arr.at(id - 1);
 }
 

@@ -6,17 +6,17 @@
 #include <iostream>
 
 class OperativeControlSystem {
-private:
-    std::shared_ptr<Level> lvl;
-    std::shared_ptr<Operative> current_operative;
+protected:
+    Level& lvl;
+    std::shared_ptr<Operative>& current_operative;
 public:
-    OperativeControlSystem(std::shared_ptr<Level> lvl, std::shared_ptr<Operative> current_operative);
+    OperativeControlSystem(Level& lvl, std::shared_ptr<Operative>& current_operative);
 
     void shoot(direction drctn);
 
     void take_step(direction drctn);
 
-    void set_operative(std::shared_ptr<Operative> operative);
+    void set_operative(std::shared_ptr<Operative>& operative);
 
     void take_item(size_t id);
 

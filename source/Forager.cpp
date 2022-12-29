@@ -27,7 +27,7 @@ unsigned short Forager::get_max_weight() const {
 }
 
 
-Forager &Forager::push_inventory(std::shared_ptr<Item> newItem) {
+Forager &Forager::push_inventory(std::unique_ptr<Item> newItem) {
     if (max_weight - current_weight < newItem->get_weight()) {
         return *this;
     }
@@ -37,14 +37,14 @@ Forager &Forager::push_inventory(std::shared_ptr<Item> newItem) {
     return *this;
 }
 
-std::shared_ptr<Item> Forager::pop_inventory(size_t id) {
+std::unique_ptr<Item> Forager::pop_inventory(size_t id) {
     auto tmp = inventory.eraseItem(id);
     if (tmp != nullptr)
         current_weight -= tmp->get_weight();
     return tmp;
 }
 
-std::shared_ptr<Item> Forager::get_item(size_t id) const {
+const std::unique_ptr<Item>& Forager::get_item(size_t id) const {
     return inventory.getItem(id);
 }
 
@@ -67,4 +67,8 @@ std::string Forager::get_info() const {
              + std::to_string(get_current_weight()) + "\n";
     result += inventory.get_info();
     return result;
+}
+
+char Forager::get_character() const {
+    return 'F';
 }

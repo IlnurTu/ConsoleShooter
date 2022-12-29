@@ -1,9 +1,48 @@
-2
-Name 100 100 1 2 1000 97 2 1 2 2 10 5
-Rifle 5 2 1 495 500 2 4 2
-0
-Name 100 100 1 2 5 5 0 0 2 2 10 5
-Rifle 5 2 1 495 500 2 4 2
 1
-Rifle 5 2 1 495 500 2 4 2
+Name 100 100 1 2 5 5 1 1 2 2 20 12
+Rifle 10 20 1 30 30 2 1 3
+3
+ContainerBullets 1 150 150 1
+Kit 1 1 50
+Gun 10 15 1 30 30 2 1 3
 
+
+unsigned short weight;
+            unsigned short damage;
+            unsigned short type_bullets;
+            unsigned short current_number_bullets;
+            unsigned short max_number_bullets;
+            unsigned short points_time_for_shoot;
+            unsigned short points_time_for_reload;
+            unsigned short firing_range;
+if (nameOfItem == "ContainerBullets") {
+            size_t max_bullets;
+            size_t current_bullets;
+            unsigned short type;
+            file >> max_bullets >> current_bullets >> type;
+            std::unique_ptr<Item> item(
+                    new ContainerBullets(nameOfItem, weight, max_bullets, current_bullets, type));
+            inventory.add(std::move(item));
+
+             if (nameOfItem == "Kit") {
+                        unsigned short points_time_for_use;
+                        unsigned short restored_health;
+                        file >> points_time_for_use >> restored_health;
+                        std::unique_ptr<Item> item(
+                                new Kit(nameOfItem, weight, points_time_for_use, restored_health));
+                        inventory.add(std::move(item));
+                    }
+
+                     std::string name;
+                        unsigned short max_health;
+                        unsigned short current_health;
+                        unsigned short points_time_for_step;
+                        unsigned short viewing_radius;
+                        unsigned short max_points_time;
+                        unsigned short current_points_time;
+                        unsigned short x;
+                        unsigned short y;
+                        unsigned short damage_;
+                        unsigned short points_time_for_shoot_;
+                        unsigned short max_weight;
+                        unsigned short current_weight;
