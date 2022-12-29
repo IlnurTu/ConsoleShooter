@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 20)
 
 enable_testing()
 add_subdirectory(googletest)
-add_executable(test_app Tests/Unit.cpp source/Unit.cpp source/Wild.cpp source/Item.cpp source/Kit.cpp
-        "source/Container of bullets.cpp" source/Weapon.cpp source/Rifle.cpp source/Gun.cpp source/Inventory.cpp
-        source/Intelligent.cpp source/Forager.cpp source/Operative.cpp source/Cell.cpp source/Wall.cpp source/Glass.cpp source/Floor.cpp "source/Weak wall.cpp" "source/Operative control system.cpp" source/Map.cpp)
+add_executable(test_app Tests/Unit.cpp Units/source/Unit.cpp Units/source/Wild.cpp Items/source/Item.cpp Items/source/Kit.cpp
+        "Items/source/Container of bullets.cpp" Items/source/Weapon.cpp Items/source/Rifle.cpp Items/source/Gun.cpp Items/source/Inventory.cpp
+        Units/source/Intelligent.cpp Units/source/Forager.cpp Units/source/Operative.cpp Map/source/Cell.cpp Map/source/Wall.cpp Map/source/Glass.cpp Map/source/Floor.cpp "Map/source/Weak wall.cpp" "Control System/source/Operative control system.cpp" Map/source/Map.cpp)
 target_link_libraries(test_app gtest_main gmock_main)
 
-add_executable(app main.cpp source/Unit.cpp source/Wild.cpp source/Item.cpp source/Kit.cpp
-        "source/Container of bullets.cpp" source/Weapon.cpp source/Rifle.cpp source/Gun.cpp source/Inventory.cpp
-        source/Intelligent.cpp source/Forager.cpp source/Operative.cpp source/Cell.cpp source/Wall.cpp source/Glass.cpp source/Floor.cpp "source/Weak wall.cpp" "source/Operative control system.cpp" source/Map.cpp source/LoadUnloadFile.cpp "source/Wild Control System.cpp" "source/Forager Control System.cpp" "source/Intelligent Control System.cpp" headers/EnemyLogic.h headers/DrawSystem.h "headers/Graphic Operative Control System.h" "headers/Graphic Logic Forager.h" "headers/Wild Graphic System.h" "headers/Graphic Intelligent System.h")
+add_executable(app main.cpp Units/source/Unit.cpp Units/source/Wild.cpp Items/source/Item.cpp Items/source/Kit.cpp
+        "Items/source/Container of bullets.cpp" Items/source/Weapon.cpp Items/source/Rifle.cpp Items/source/Gun.cpp Items/source/Inventory.cpp
+        Units/source/Intelligent.cpp Units/source/Forager.cpp Units/source/Operative.cpp Map/source/Cell.cpp Map/source/Wall.cpp Map/source/Glass.cpp Map/source/Floor.cpp "Map/source/Weak wall.cpp" "Control System/source/Operative control system.cpp" Map/source/Map.cpp "File System/source/LoadUnloadFile.cpp" "Control System/source/Wild Control System.cpp" "Control System/source/Forager Control System.cpp" "Control System/source/Intelligent Control System.cpp" GraphicSystem/headers/DrawSystem.h "GraphicSystem/headers/Graphic Operative Control System.h" "GraphicSystem/headers/Graphic Logic Forager.h" "GraphicSystem/headers/Wild Graphic System.h" "GraphicSystem/headers/Graphic Intelligent System.h" Application/source/Game.cpp GraphicSystem/source/DrawSystem.cpp "GraphicSystem/source/Graphic Intelligent System.cpp" "GraphicSystem/source/Graphic Logic Forager.cpp" "GraphicSystem/source/Graphic Operative Control.cpp" "GraphicSystem/source/Wild Graphic System.cpp")

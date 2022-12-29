@@ -1,7 +1,7 @@
 #ifndef LAB4_INTELLIGENT_H
 #define LAB4_INTELLIGENT_H
 #include "Wild.h"
-#include "Weapon.h"
+#include "../../Items/headers/Weapon.h"
 
 class Intelligent:public Wild{
 protected:

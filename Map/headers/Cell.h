@@ -1,7 +1,7 @@
 #ifndef LAB4_CELL_H
 #define LAB4_CELL_H
-#include "Unit.h"
-#include "Inventory.h"
+#include "../../Units/headers/Unit.h"
+#include "../../Items/headers/Inventory.h"
 
 
 class Cell{

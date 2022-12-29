@@ -2,7 +2,7 @@
 #ifndef LAB4_OPERATIVE_CONTROL_SYSTEM_H
 #define LAB4_OPERATIVE_CONTROL_SYSTEM_H
 
-#include "Level.h"
+#include "../../Application/headers/Level.h"
 #include <iostream>
 
 class OperativeControlSystem {

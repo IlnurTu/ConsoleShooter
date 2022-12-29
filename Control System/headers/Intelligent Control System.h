@@ -1,4 +1,4 @@
-#include "Level.h"
+#include "../../Application/headers/Level.h"
 
 #ifndef LAB4_INTELLIGENT_CONTROL_SYSTEM_H
 #define LAB4_INTELLIGENT_CONTROL_SYSTEM_H

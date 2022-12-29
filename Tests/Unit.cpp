@@ -1,12 +1,12 @@
-#include "../headers/Unit.h"
-#include "../headers/Wild.h"
-#include "../headers/Intelligent.h"
+#include "../Units/headers/Unit.h"
+#include "../Units/headers/Wild.h"
+#include "../Units/headers/Intelligent.h"
 #include "../googletest/googletest/include/gtest/gtest.h"
-#include "../headers/Rifle.h"
-#include "../headers/Forager.h"
-#include "../headers/Operative.h"
-#include "../headers/Operative control system.h"
-#include "../headers/Map.h"
+#include "../Items/headers/Rifle.h"
+#include "../Units/headers/Forager.h"
+#include "../Units/headers/Operative.h"
+#include "../Control System/headers/Operative control system.h"
+#include "../Map/headers/Map.h"
 
 
 

@@ -1,13 +1,13 @@
 #ifndef LAB4_LEVEL_H
 #define LAB4_LEVEL_H
 
-#include "Operative.h"
-#include "Rifle.h"
-#include "Gun.h"
-#include "Kit.h"
-#include "Container of bullets.h"
-#include "Cell.h"
-#include "Map.h"
+#include "../../Units/headers/Operative.h"
+#include "../../Items/headers/Rifle.h"
+#include "../../Items/headers/Gun.h"
+#include "../../Items/headers/Kit.h"
+#include "../../Items/headers/Container of bullets.h"
+#include "../../Map/headers/Cell.h"
+#include "../../Map/headers/Map.h"
 
 
 struct Level {

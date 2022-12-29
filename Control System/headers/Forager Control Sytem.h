@@ -1,4 +1,4 @@
-#include "Level.h"
+#include "../../Application/headers/Level.h"
 #ifndef LAB4_FORAGER_CONTROL_SYTEM_H
 #define LAB4_FORAGER_CONTROL_SYTEM_H
 

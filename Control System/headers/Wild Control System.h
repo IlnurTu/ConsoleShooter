@@ -1,7 +1,7 @@
 #ifndef LAB4_WILD_CONTROL_SYSTEM_H
 #define LAB4_WILD_CONTROL_SYSTEM_H
 
-#include "Level.h"
+#include "../../Application/headers/Level.h"
 
 class WildControlSystem {
 protected:

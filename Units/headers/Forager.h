@@ -2,8 +2,8 @@
 #define LAB4_FORAGER_H
 
 #include "Unit.h"
-#include "Inventory.h"
-#include "Kit.h"
+#include "../../Items/headers/Inventory.h"
+#include "../../Items/headers/Kit.h"
 
 class Forager : virtual public Unit {
 protected:
